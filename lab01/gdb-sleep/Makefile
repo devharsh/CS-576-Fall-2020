@@ -1,13 +1,15 @@
 CC=gcc
-TARGETS=sleeper
+TARGETS=sleeper sleeper-sp
 
-all: $(TARGETS) 
+all: $(TARGETS)
 
-find_me: find_me.c
+sleeper: sleeper.c
 
+sleeper-sp: sleeper.c
+	$(CC) -o $@ -g -fomit-frame-pointer $<
 
 .PHONY: clean
 
 
 clean:
-	rm -f $(TARGETS) *.o
+	rm -f $(TARGETS) *.o                        

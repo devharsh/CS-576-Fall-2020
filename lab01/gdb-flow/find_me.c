@@ -1,20 +1,20 @@
 #include <stdio.h>
 
-void cookie() {
-	printf("Damn you got me\n");
+void accept() {
+	printf("Access granted.\n");
 }
 
-void not_me() {
-	printf("Oh ohh\n");
+void deny() {
+	printf("Access denied.\n");
 }
 
 int main() {
 	int a = 0;
 
-	if (a) {
-		cookie();
+	if (a == 12345) {
+		accept();
 	} else {
-		not_me();
+		deny();
 	}
 
 	return 0;
