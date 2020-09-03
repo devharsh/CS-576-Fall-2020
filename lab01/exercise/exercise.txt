@@ -1,0 +1,97 @@
+CSS 577 Lab
+Week 1 - 9/3/2020
+
+
+Connecting to Linux-Lab
+
+Connect to VPN:
+https://sit.teamdynamix.com/TDClient/1865/Portal/Requests/ServiceDet?ID=7392
+
+SSH to Linux-Lab:
+ssh <stevens_username>@lab.srcit.stevens-tech.edu
+
+
+
+GDB Basics
+
+Compiling source code
+Compile using the -g flag in order to enable debug symbols for GDB:
+
+gcc main.cpp -g -Wall -Werror -o main
+
+Starting GDB
+To start a program with GDB and no arguments simply run:
+
+gdb <executable name>
+
+You can run your program after gdb has started using run (abbreviated r):
+
+(gdb) r
+
+In order to start GDB with arguments you can use the following command:
+
+gdb --args program arg1 arg2 ... argN  
+(gdb) r
+
+Alternatively, you can start GDB without any arguments and specify them with run:
+
+gdb <executable name>
+(gdb) r arg1 arg2 ... argN
+
+Setting Breakpoints
+A breakpoint makes your program stop whenever a certain point in the program is reached.
+You can set up a breakpoint using the following command:
+
+break <source_file>:<line_number>
+
+or you can set a breakpoint on a specific function
+
+(gdb) break main                // Breaks at main()
+
+List defined breakpoints using the following command:
+
+(gdb) info b
+Num Type           Disp Enb Address    What
+1   breakpoint     keep y   0x08048fd9 in main at vuln.c:627
+
+Delete breakpoint 1 using:
+
+(gdb) del 1
+
+Accessing the source code
+To print lines from a source file, use the list command (abbreviated l). By default, ten lines are printed.
+
+Next and Step
+GDB lets you run the program line-by-line using the commands 'next' and 'step'. Next keeps the control strictly in the current scope whereas step follows the execution through function calls.
+
+For example, suppose you have this sequence of code and a breakpoint has been set on line 5:
+...
+5.    value=display();
+6.    readinput();
+...
+
+If you use the next command, line 5 gets executed and the control advances to the next line, readinput().
+The step command advances the control to the first line of display().
+
+Examining Variables
+To examine a variable use:
+
+print <var name to print>
+
+Note: You can also modify variables' values by:
+
+set <var> = <value>
+
+You can modify variables to see if an issue has been resolved or to force the program to follow a particular path.
+
+
+
+Exercise
+
+Tasks:
+Start gdb with the given executable
+Inspect source code through gdb or use gdbtui
+Divert the program's execution path to the accept function
+Find out how many times the loop inside the accept function was executed through gdb
+Hint: Set breakpoints
+
