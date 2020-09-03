@@ -30,7 +30,7 @@ int main() {
 		admin == 1;
 	}
 
-	if (admin) {
+	if (cwid) {
 		accept();
 	} else {
 		deny();

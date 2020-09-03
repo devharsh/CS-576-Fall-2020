@@ -89,9 +89,8 @@ You can modify variables to see if an issue has been resolved or to force the pr
 Exercise
 
 Tasks:
-Start gdb with the given executable
-Inspect source code through gdb or use gdbtui
-Divert the program's execution path to the accept function
-Find out how many times the loop inside the accept function was executed through gdb
-Hint: Set breakpoints
+- Start gdb/ gdbtui with the given executable
+- Inspect source code through gdb
+- Find out how many times the loop inside the accept function was executed through gdb
+- Hint: Set breakpoints
 
