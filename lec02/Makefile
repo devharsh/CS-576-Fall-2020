@@ -1,14 +1,24 @@
 CC=gcc
-CFLAGS0=-fno-stack-protector -z execstack -O0 -g
+CFLAGS0=-no-pie -fno-stack-protector -z execstack -O0
 TARGETS=buffers
+ALL_TARGETS=$(TARGETS) $(addsuffix -dbg, $(TARGETS)) $(addsuffix -stripped, $(TARGETS))
 
-all: $(TARGETS) 
+all: $(ALL_TARGETS)
 
-buffers: buffers.c
-	$(CC) -o $@ $(CFLAGS0) $<
+%-dbg: %.c
+	$(CC) -o $@ $(CFLAGS0) -g $<
+
+%: %.c
+	$(CC) -o $@ $(CFLAGS0)  $<
+
+%-stripped: %
+	strip -o $@ $<
 
 .PHONY: clean
 
 
 clean:
-	rm -f $(TARGETS) *.o
+	rm -f *.o
+
+cleanall:
+	rm -f $(ALL_TARGETS) *.o

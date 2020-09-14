@@ -2,15 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 char buf[16] = "EMPTY";
 char prepend_str[] = "CENSORED:";
-
-
-void untouchable(void)
-{
-	puts("Can't touch this!\n");
-	exit(0);
-}
 
 static void censor_print(char *dst, const char *src)
 {
