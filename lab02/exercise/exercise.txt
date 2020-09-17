@@ -1,0 +1,19 @@
+CSS 577 Lab 02
+Week 3 - 9/17/2020
+
+Netcat Server
+nc -l port
+
+Netcat Client
+nc localhost port
+
+
+Exercise
+
+Tasks:
+- Examine the code of ./ex using gdb/ gdbtui
+- Connect to the server using
+	- netcat localhost 7777
+- Send a string to the server that will cause it to reply with "Access Granted"
+- Hint: overflow the global variable request
+
