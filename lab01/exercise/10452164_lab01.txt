@@ -1,0 +1,12 @@
+Answer: 5
+
+
+Steps:
+- gdb ex-sp
+- break ex.c:33
+- break ex.c:12
+- run
+- 10452164
+- step
+- print cc
+- while loop runs 5 times from 4 to 0
