@@ -19,8 +19,9 @@ _start:
 	mov	%eax, %edi 		# file handle 1 is stdout
 	lea	message+0x44444401(%rip), %rsi
 	sub	$0x44444401, %rsi
+	incb	11(%rsi)
 	xor	%edx, %edx
-	mov	$11, %dl		# number of bytes
+	mov	$12, %dl		# number of bytes
         syscall                         # invoke operating system to do the write
 
         # exit(0)
@@ -29,4 +30,4 @@ _start:
         xor     %edi, %edi              # we want return code 0
         syscall                         # invoke operating system to exit
 message:
-        .ascii  "Hello world"
+        .ascii  "Hello world\x09"

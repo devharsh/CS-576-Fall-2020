@@ -19,4 +19,5 @@ Use scripts `run32.sh` and `run64.sh` to execute the vulnerable executables when
 
 ## Process layout outside gdb
 
-GDB can alter the layout of the program (stack). To learn its actual addresses, you can run the program at the command line and attach to it wit GDB using the `attack <pid>` command.
+GDB can alter the layout of the program (stack). To learn its actual addresses, you can run the program at the command line and attach to it wit GDB using the `attach <pid>` command.
+

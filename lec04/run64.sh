@@ -1,3 +1,3 @@
 #!/bin/sh
 
-setarch x86_64 -R $1
+setarch x86_64 -R -L $1

@@ -15,11 +15,12 @@
 _start:
         # write(1, message, 11)
 	xor	%eax, %eax
-	inc	%rax			# system call 1 is write
+	inc	%eax			# system call 1 is write
 	mov	%eax, %edi 		# file handle 1 is stdout
 	lea	message(%rip), %rsi
+	incb	message+11(%rip)
 	xor	%edx, %edx
-	mov	$11, %dl		# number of bytes
+	mov	$12, %dl		# number of bytes
         syscall                         # invoke operating system to do the write
 
         # exit(0)
@@ -28,4 +29,4 @@ _start:
         xor     %edi, %edi              # we want return code 0
         syscall                         # invoke operating system to exit
 message:
-        .ascii  "Hello world"
+        .ascii  "Hello world\x09"

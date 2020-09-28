@@ -1,6 +1,6 @@
 CC=gcc
 LDFLAGS=-no-pie -z execstack
-LDFLAGS_SC=--omagic
+LDFLAGS_SC=-Wl,--omagic
 CFLAGS=-fno-stack-protector -z execstack -O1 -U_FORTIFY_SOURCE
 #CFLAGS1=-fno-stack-protector -O1 -U_FORTIFY_SOURCE #-fno-unwind-tables -fno-asynchronous-unwind-tables
 DEMO_TGTS=so
@@ -28,10 +28,10 @@ $(DEMO_TARGETS64fp): %-64fp: %.c
 	objcopy -O binary --only-section=.text $< $@
 
 %32.bin: %32.s
-	$(CC) -m32 -nostdlib -no-pie -o $@ $<
+	$(CC) -m32 -nostdlib -no-pie $(LDFLAGS_SC) -o $@ $<
 
 %64.bin: %64.s
-	$(CC) -m64 -nostdlib -no-pie -o $@ $<
+	$(CC) -m64 -nostdlib -no-pie $(LDFLAGS_SC) -o $@ $<
 
 .PHONY: clean cleanall
 

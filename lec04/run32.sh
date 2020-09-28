@@ -1,3 +1,3 @@
 #!/bin/sh
 
-setarch i386 -R $1
+setarch i386 -R -L $1
