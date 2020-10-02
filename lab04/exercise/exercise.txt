@@ -1,0 +1,14 @@
+CSS 577 Lab 03
+Week 4 - 10/01/2020
+
+
+Exercise
+
+Tasks:
+- Use gdb to examine the stack
+- Find the vulnerable buffer in the stack
+- Find the return address
+- Create an input payload that will overflow the buffer and change the return address so function display is called
+- The binary can be executed using: ./ex < payload
+- Hint: Create a script that produces the payload file
+
