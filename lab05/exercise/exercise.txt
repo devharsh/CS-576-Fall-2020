@@ -8,6 +8,6 @@ Tasks:
 - Create an exploit as seen during the lab
 - Create a payload that will overflow the buffer
 - Overwrite the return address
-- Call the function spare_func1
+- Call the function spare_func2
 - Perform a return to libc and call the "system" libc function with "bin\bash" as its argument
 - Chain "_exit" libc function so the shell returns gracefully
