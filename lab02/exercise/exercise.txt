@@ -1,4 +1,4 @@
-CSS 577 Lab 02
+CSS 576 Lab 02
 Week 3 - 9/17/2020
 
 Netcat Server
