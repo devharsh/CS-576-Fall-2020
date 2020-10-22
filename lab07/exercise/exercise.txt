@@ -1,0 +1,12 @@
+CSS 576 Lab 06
+Week 7 - 10/22/2020
+
+
+Exercise
+
+Tasks:
+- Examine the stack with gdb
+- Locate the return address of function test_fmts
+- Locate the stack canary
+- Create a format string that will print out the stack canary and the return address
+
