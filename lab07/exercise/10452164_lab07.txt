@@ -16,7 +16,7 @@
     Breakpoint 4 at 0x8048544 --> after printf in test_fmts
 11. (gdb) c
     Continuing.
-    Enter string: %27$x
+    Enter string: %27$x --> p/d (0xffffda1c - 0xffffd9b0)/4
     8048573
 
     Breakpoint 4, 0x08048544 in test_fmts ()

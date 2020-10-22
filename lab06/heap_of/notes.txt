@@ -1,0 +1,12 @@
+Binaries to test for ROP:
+
+- lecture binaries
+- lab binaries
+- /bin/
+- /sbin/
+- /lib/
+- /opt/
+- /usr/bin
+- /usr/sbin
+- /usr/local/bin
+- /usr/local/sbin
