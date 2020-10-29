@@ -1,0 +1,11 @@
+CSS 576 Lab 06
+Week 8 - 10/29/2020
+
+
+Exercise
+
+Tasks:
+- Examine the application uaf with gdb
+- Locate the function pointer sa->fptr in the heap
+- Create an input that will overwrite the function pointer with the address of function never_call_me
+- The message "You shouldn't be here!" should be printed
