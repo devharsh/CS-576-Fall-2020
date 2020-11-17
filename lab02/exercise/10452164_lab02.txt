@@ -1,1 +1,5 @@
-python -c "print 'A' * 16 + 'y'" | netcat localhost 7777
+1. tmux
+2. ./ex
+3. Ctrl+b
+4. Shift+%
+5. python -c "print 'A' * 16 + 'y'" | netcat localhost 7777
