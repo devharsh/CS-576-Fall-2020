@@ -4,3 +4,6 @@
 
 CS 576 Systems Security - Fall 2020
 
+## License
+
+See [LICENSE](LICENSE).
